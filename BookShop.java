@@ -1,4 +1,5 @@
 public class BookShop {
+
     private String isbn, name;
     private int price, quantity;
     private double discount, newPrice;
@@ -10,12 +11,19 @@ public class BookShop {
         this.price = price;
         this.quantity = quantity;
     }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public double findDiscount() {
         discount = (PERCENTAGE - (discount));
-        price = price * quantity;
+        newPrice = price * quantity;
         discount = (discount / PERCENTAGE);
-        newPrice = price * discount;
+        newPrice = newPrice * discount;
         return newPrice;
     }
 
@@ -28,17 +36,17 @@ public class BookShop {
             discount = 20;
             priceLessDiscount = findDiscount();
         }
-        return "You will pay $" + priceLessDiscount + " for buying " + quantity + " books.";
+        return "Each copy costs $" +price+ ". You owe $" + priceLessDiscount + " for buying " + quantity + " copies of the " + getName() +".";
 
     }
 
     public static void main(String[] args) {
-        BookShop dictionary = new BookShop("1234-ASDY-678", "THE DICTIONARY", 10, 25);
-        BookShop bible = new BookShop("1234-ASDY-678", "THE BIBLE", 10, 9);
-        BookShop sciences = new BookShop("1234-ASDY-678", "LEARN TO CODE", 10, 9);
-        System.out.print(bible.book() );
-        System.out.print(dictionary.book());
-        System.out.print(sciences.book());
+        BookShop dictionary = new BookShop("1234-ASDY-6544", "THE DICTIONARY", 10, 25);
+        BookShop bible = new BookShop("1234-ASDY-6478", "THE BIBLE", 20, 9);
+        BookShop sciences = new BookShop("1234-ASDY-6238", "LEARN TO CODE", 40, 90);
+        System.out.println(bible.book() );
+        System.out.println(dictionary.book());
+        System.out.println(sciences.book());
     }
 
 }
